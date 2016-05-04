@@ -13,6 +13,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	@IBOutlet weak var tableView: UITableView!
 	
 	private let provinces: [String] = ["Alberta", "British Columbia", "Manitoba", "New Brunswick", "Newfoundland", "Nova Scotia", "Ontario", "Prince Edward Island", "Quebec", "Saskatchewan"]
+	private let capitalCities: [String] = ["Edmonton", "Victoria", "Winnipeg", "Fredericton", "St. John's", "Halifax", "Toronto", "Charlottetown", "Quebec", "Regina"]
+	
+	private let capital: String = "Capital City : "
+	
+	
+	
+	
 	private let identifier: String = "CanadianProvinces"
 
 	override func viewDidLoad() {
@@ -30,8 +37,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 	}
 	
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath) 
-		cell.textLabel?.text = provinces[indexPath.row]
+		let cell = tableView.dequeueReusableCellWithIdentifier(identifier, forIndexPath: indexPath)
+		let province = tableView.viewWithTag(1) as! UILabel
+		let capitalLabel = tableView.viewWithTag(2) as! UILabel
+		let capitalCity = tableView.viewWithTag(3) as! UILabel
+		
+		province.text = provinces[indexPath.row]
+		capitalCity.text = capitalCities[indexPath.row]
+		capitalLabel.text = capital
+		
 		return cell;
 	}
 	
